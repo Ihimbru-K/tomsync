@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
+import java.util.List;
 
 
 ///**
@@ -30,10 +29,19 @@ public class Main {
 
     @GetMapping("/greet") //used in http get requests
     public getResponse greet(){
-        return new  getResponse("Hello");
+        return new  getResponse("Hello", List.of("Machine learning", "Embedded Systems",
+                "Advanced Computer Networks"),
+                new  Person("Ihimbru", 23, 30_000)
+
+        );
     }
 
+    record Person(String person, int age, double savings){}
 
-    record getResponse(String greet){}
+
+    record getResponse(String greet,
+    List<String> myCourses,
+    Person person
+    ){}
 
 }
