@@ -31,7 +31,7 @@ public class Main {
     @GetMapping("/greet") //used in http get requests
     public getResponse greet(){
         return new  getResponse("Hello");
-    };
+    }
 
 
     record getResponse(String greet){}
