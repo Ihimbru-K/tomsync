@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 // *///
 @SpringBootApplication //this annotation declares that this is a spring application
 @RestController  // this annotation helps us create methods that will be exposed as rest APIs
+//all methods under this controller return data in JSON format
 public class Main {
     public static void main(String[] args) {
         //System.out.println("Hello world");
@@ -28,8 +29,11 @@ public class Main {
     }
 
     @GetMapping("/greet") //used in http get requests
-    public String greet(){
-        return "Hello there";
+    public getResponse greet(){
+        return new  getResponse("Hello");
     };
+
+
+    record getResponse(String greet){}
 
 }
