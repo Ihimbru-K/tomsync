@@ -1,0 +1,11 @@
+
+#it contains dependencies and properties of the springboot application
+
+server:
+  port: 8080  #app runs on this port
+
+
+spring:
+  main:
+    web-application-type: servlet #this app runs on a web server
+
