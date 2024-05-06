@@ -8,7 +8,12 @@ public class Customer {
     private String name;
     private String email;
     private Integer age;
+<<<<<<< HEAD
 
+=======
+    //
+    
+>>>>>>> 9cf534e55545545795ad095519412eab2b0262de
 
 
     public Customer(Integer id, String name, String email, Integer age) {
