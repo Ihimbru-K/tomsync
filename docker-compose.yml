@@ -21,3 +21,8 @@ networks:
 
 volumes:
   db:
+spec:
+  containers:
+    - name: postgres
+      image: <image_url>:<version_tag>
+      imagePullPolicy: Always

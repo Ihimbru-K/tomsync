@@ -1,11 +1,20 @@
-
-#it contains dependencies and properties of the springboot application
+# It contains dependencies and properties of the Spring Boot application
 
 server:
-  port: 8080  #app runs on this port
-
+  port: 8080  # App runs on this port
 
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5332/customer
+    username: amigoscode
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: 'create-drop'
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.PostgresSQLDialect
+      format_sql: true
+    show-sql: true
   main:
-    web-application-type: servlet #this app runs on a web server
-
+    web-application-type: servlet  # This app runs on a web server
