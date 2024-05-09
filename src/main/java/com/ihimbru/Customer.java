@@ -12,7 +12,7 @@ public class Customer {
     @SequenceGenerator(
             name = "customer_id_sequence",
             sequenceName = "customer_id_sequence",
-            allocationSize = 1
+            allocationSize = 1  //increment size of id will be 1,2,3...
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
