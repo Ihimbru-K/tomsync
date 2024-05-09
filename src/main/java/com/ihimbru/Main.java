@@ -1,6 +1,7 @@
 package com.ihimbru;
 
 
+import jakarta.transaction.Transactional;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import java.util.List;
 //all methods under this controller return a response in JSON format
 @RestController
 @RequestMapping("api/v1/customers")    // this will return an empty list from the getcustomers method
+
 public class Main {
 
     private final CustomerRepository customerRepository;
@@ -68,11 +70,35 @@ public class Main {
         customerRepository.deleteById(id);
     }
 
-    public void updateCustomer(NewCustomerRequest request){
-        
+    @PutMapping("{customerId}")
+    public void updateCustomer(@PathVariable("customerId") Integer customerId, @RequestBody NewCustomerRequest request) {
+        // Find the existing customer by ID
+        Customer existingCustomer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
 
+        // Update the customer with the new values
+        existingCustomer.setName(request.name);
+        existingCustomer.setEmail(request.email);
+        existingCustomer.setAge(request.age);
+
+        // Save the updated customer to the database
+        customerRepository.save(existingCustomer);
     }
 
+
+
+
+
+//    @PutMapping("{customerId}")
+//    public void updateCustomer(@PathVariable("customerId") @RequestBody NewCustomerRequest request){
+//        Customer customer = new Customer();
+//        customer.setName(request.name);
+//        customer.setAge(request.age);
+//
+//        customer.setEmail(request.email);
+//        customerRepository.saveAndFlush(customer);
+//
+//    }
 
 
 }
