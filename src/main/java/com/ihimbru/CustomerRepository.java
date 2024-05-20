@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 //writing sql commands directly
 public interface CustomerRepository extends JpaRepository<Customer, Integer > {
 
-
+///
 }
